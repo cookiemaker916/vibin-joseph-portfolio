@@ -96,13 +96,13 @@ export default function Transformations() {
           >
             <div className="w-full h-[400px] lg:h-full bg-obsidian-800 rounded-2xl border border-white/10 overflow-hidden relative">
               
-              {/* Placeholder for Before/After Image Split */}
-              <div className="absolute inset-0 flex items-center justify-center bg-obsidian-800">
-                <div className="text-metallic/30 font-display text-xl tracking-widest uppercase flex gap-12">
-                  <span>Before</span>
-                  <span>|</span>
-                  <span>After</span>
-                </div>
+              {/* Before/After Image Split */}
+              <div className="absolute inset-0 flex items-center justify-center bg-obsidian-800 -z-20">
+                <img 
+                  src="/images/before_after.png" 
+                  alt="Transformation" 
+                  className="w-full h-full object-cover opacity-80"
+                />
               </div>
 
               {/* Overlay Gradient */}

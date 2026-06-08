@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ParallaxItem } from "../effects/ThreeDElements";
 import { ChevronRight, Play } from "lucide-react";
+import ThreeDViewer from "../effects/ThreeDViewer";
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -66,10 +67,20 @@ export default function Hero() {
         <div className="w-48 h-48 bg-metallic rounded-full blur-xl"></div>
       </ParallaxItem>
 
-      <div className="container mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-12 items-center">
+      {/* Full Background Interactive WebGL Model */}
+      <div className="absolute inset-0 z-0 opacity-70">
+        <ThreeDViewer 
+          modelPath="/models/gym_outfit_sport_hoodie_pants.glb" 
+          className="w-full h-full" 
+          scale={0.4} 
+          position={[3, 0, 0]} 
+        />
+      </div>
+
+      <div className="container mx-auto px-6 md:px-12 relative z-10 pointer-events-none h-full flex items-center">
         
         {/* Left Column - Copy */}
-        <div className="flex flex-col space-y-8 z-10">
+        <div className="flex flex-col space-y-8 max-w-2xl pointer-events-auto lg:mt-0 mt-32 bg-obsidian-900/40 backdrop-blur-md p-8 md:p-12 rounded-[2rem] border border-white/5 shadow-2xl">
           <h1 ref={headlineRef} className="text-5xl md:text-7xl font-display font-bold leading-[1.1] tracking-tighter text-foreground uppercase overflow-hidden flex flex-wrap gap-x-4 gap-y-2">
             {words.map((word, i) => (
               <span key={i} className="headline-word inline-block origin-bottom-left">
@@ -91,20 +102,6 @@ export default function Hero() {
             <button className="px-8 py-4 bg-transparent border border-metallic/30 text-foreground font-semibold rounded-full hover:bg-white/5 transition-colors flex items-center justify-center gap-2">
               <Play className="w-5 h-5" /> Watch Reel
             </button>
-          </div>
-        </div>
-
-        {/* Right Column - Image */}
-        <div ref={imageRef} className="relative h-[600px] lg:h-[800px] w-full flex items-end justify-center">
-          {/* Subtle glow behind image */}
-          <div className="absolute inset-0 bg-crimson/10 rounded-full blur-[100px] -z-10"></div>
-          
-          {/* Placeholder for Vibin's 3D cutout image */}
-          <div className="w-full h-full max-w-[500px] bg-gradient-to-t from-obsidian via-obsidian-800 to-transparent border border-white/5 rounded-t-[200px] flex items-center justify-center relative overflow-hidden mix-blend-lighten">
-            {/* The actual image would go here with object-cover and object-bottom */}
-            <span className="text-metallic/50 font-display text-sm tracking-widest uppercase">
-              [Vibin Cutout Image Placeholder]
-            </span>
           </div>
         </div>
 

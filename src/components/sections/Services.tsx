@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Dumbbell, Activity, Trophy, ArrowRight } from "lucide-react";
+import ThreeDViewer from "../effects/ThreeDViewer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,6 +59,15 @@ export default function Services() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-crimson/5 rounded-full blur-[120px] transition-opacity duration-700 pointer-events-none"
         style={{ opacity: hoveredCard !== null ? 1 : 0.3 }}
       />
+
+      {/* Background 3D Model (Dumbbell) */}
+      <div className="absolute inset-0 w-full h-full opacity-40 z-0">
+        <ThreeDViewer 
+          modelPath="/models/little_gym_stuff_-_dumbbell.glb" 
+          scale={3} 
+          position={[0, 0, 0]} 
+        />
+      </div>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">

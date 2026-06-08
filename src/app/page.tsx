@@ -5,9 +5,11 @@ import Navbar from "@/components/ui/Navbar";
 import FloatingWhatsApp from "@/components/ui/FloatingWhatsApp";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
+import Certifications from "@/components/sections/Certifications";
 import Services from "@/components/sections/Services";
 import Transformations from "@/components/sections/Transformations";
 import LeadCapture from "@/components/sections/LeadCapture";
+import Preloader from "@/components/effects/Preloader";
 
 // Register Lenis smooth scroll for Next.js if needed, or simple custom GSAP scroll
 // We'll use a simple approach for smooth feel using native CSS + GSAP
@@ -22,9 +24,11 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col bg-obsidian selection:bg-crimson selection:text-white">
+      <Preloader />
       <Navbar />
       <Hero />
       <About />
+      <Certifications />
       <Services />
       <Transformations />
       <LeadCapture />

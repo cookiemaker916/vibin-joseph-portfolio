@@ -18,13 +18,13 @@ export default function FloatingWhatsApp() {
       ease: "power2.out",
     });
 
-    // Gentle hover float effect
+    // Aggressive jumping animation
     const floatAnim = gsap.to(iconRef.current, {
-      y: -5,
-      duration: 2,
+      y: -20,
+      duration: 0.5,
       repeat: -1,
       yoyo: true,
-      ease: "sine.inOut",
+      ease: "power1.inOut",
     });
 
     return () => {
