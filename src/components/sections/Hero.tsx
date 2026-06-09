@@ -71,17 +71,18 @@ export default function Hero() {
       <div className="absolute inset-0 z-0 opacity-70">
         <ThreeDViewer 
           modelPath="/models/gym_outfit_sport_hoodie_pants.glb" 
+          fallbackImage="/images/hero_mobile_fallback.png"
           className="w-full h-full" 
           scale={0.4} 
           position={[3, 0, 0]} 
         />
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10 pointer-events-none h-full flex items-center">
+      <div className="container mx-auto px-6 md:px-12 relative z-10 pointer-events-none h-full flex items-center pt-24 lg:pt-0">
         
         {/* Left Column - Copy */}
-        <div className="flex flex-col space-y-8 max-w-2xl pointer-events-auto lg:mt-0 mt-32 bg-obsidian-900/40 backdrop-blur-md p-8 md:p-12 rounded-[2rem] border border-white/5 shadow-2xl">
-          <h1 ref={headlineRef} className="text-5xl md:text-7xl font-display font-bold leading-[1.1] tracking-tighter text-foreground uppercase overflow-hidden flex flex-wrap gap-x-4 gap-y-2">
+        <div className="flex flex-col space-y-6 lg:space-y-8 max-w-2xl pointer-events-auto lg:mt-0 mt-8 bg-obsidian-900/60 lg:bg-obsidian-900/40 backdrop-blur-md p-6 sm:p-8 md:p-12 rounded-[2rem] border border-white/10 shadow-2xl">
+          <h1 ref={headlineRef} className="text-4xl sm:text-5xl md:text-7xl font-display font-bold leading-[1.1] tracking-tighter text-foreground uppercase overflow-hidden flex flex-wrap gap-x-2 sm:gap-x-4 gap-y-2">
             {words.map((word, i) => (
               <span key={i} className="headline-word inline-block origin-bottom-left">
                 {word}
@@ -89,18 +90,18 @@ export default function Hero() {
             ))}
           </h1>
           
-          <p ref={subheadRef} className="text-lg md:text-xl text-metallic max-w-lg font-sans">
+          <p ref={subheadRef} className="text-base sm:text-lg md:text-xl text-metallic max-w-lg font-sans">
             Elite Personal Coaching in Qatar. Engineered for high-performers who demand peak physical execution.
           </p>
           
           <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4 pt-4">
-            <button className="group relative px-8 py-4 bg-crimson text-white font-bold rounded-full overflow-hidden transition-all shadow-[0_0_20px_rgba(225,29,72,0.3)] hover:shadow-[0_0_40px_rgba(225,29,72,0.6)] flex items-center justify-center gap-2">
-              <span className="relative z-10">Secure Your Elite Blueprint</span>
+            <button className="group relative px-6 sm:px-8 py-4 bg-crimson text-white font-bold rounded-full overflow-hidden transition-all shadow-[0_0_20px_rgba(225,29,72,0.3)] hover:shadow-[0_0_40px_rgba(225,29,72,0.6)] flex items-center justify-center gap-2 min-h-[44px]">
+              <span className="relative z-10 text-sm sm:text-base">Secure Your Elite Blueprint</span>
               <ChevronRight className="relative z-10 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               <div className="absolute inset-0 h-full w-0 bg-crimson-dark transition-all duration-300 ease-out group-hover:w-full z-0"></div>
             </button>
-            <button className="px-8 py-4 bg-transparent border border-metallic/30 text-foreground font-semibold rounded-full hover:bg-white/5 transition-colors flex items-center justify-center gap-2">
-              <Play className="w-5 h-5" /> Watch Reel
+            <button className="px-6 sm:px-8 py-4 bg-transparent border border-metallic/30 text-foreground font-semibold rounded-full hover:bg-white/5 transition-colors flex items-center justify-center gap-2 min-h-[44px]">
+              <Play className="w-5 h-5" /> <span className="text-sm sm:text-base">Watch Reel</span>
             </button>
           </div>
         </div>

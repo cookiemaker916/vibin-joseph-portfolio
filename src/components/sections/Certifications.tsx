@@ -57,6 +57,7 @@ export default function Certifications() {
             
             {/* Certificate Image */}
             <div className="absolute inset-0 opacity-40 mix-blend-screen transition-opacity duration-500 group-hover:opacity-60 -z-10">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img 
                 src="/images/cert_image.png" 
                 alt="ISSA Master Trainer Certificate" 

@@ -23,7 +23,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col bg-obsidian selection:bg-crimson selection:text-white">
+    <main className="flex min-h-screen flex-col bg-obsidian selection:bg-crimson selection:text-white overflow-x-hidden">
       <Preloader />
       <Navbar />
       <Hero />

@@ -1,10 +1,10 @@
-"use client";
-
 import { Suspense, useRef, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, Environment, Float, OrbitControls, Center } from "@react-three/drei";
 import gsap from "gsap";
 import * as THREE from "three";
+import { useIsDesktop } from "@/hooks/useIsDesktop";
+import Image from "next/image";
 
 // Preload the models so they load faster
 useGLTF.preload("/models/gym_bench_chair.glb");
@@ -81,6 +81,7 @@ function LoaderFallback() {
 
 interface ThreeDViewerProps {
   modelPath: string;
+  fallbackImage?: string;
   className?: string;
   scale?: number;
   position?: [number, number, number];
@@ -89,12 +90,35 @@ interface ThreeDViewerProps {
 
 export default function ThreeDViewer({ 
   modelPath,
+  fallbackImage,
   className = "w-full h-full min-h-[500px]",
   scale = 2,
   position = [0, -1, 0],
   animateOnScroll = true
 }: ThreeDViewerProps) {
-  
+  const isDesktop = useIsDesktop();
+
+  // Handle Hydration Phase
+  if (isDesktop === null) {
+    return <div className={`relative ${className} bg-obsidian-900 animate-pulse`} />;
+  }
+
+  // Handle Mobile Fallback Phase
+  if (!isDesktop && fallbackImage) {
+    return (
+      <div className={`relative ${className}`}>
+        <Image 
+          src={fallbackImage}
+          alt="Gym Asset"
+          fill
+          className="object-cover opacity-60 mix-blend-screen"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent z-10" />
+      </div>
+    );
+  }
+
+  // Handle Full Desktop 3D Experience
   return (
     <div className={`relative ${className}`}>
       {/* HTML Fallback boundaries */}

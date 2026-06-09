@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Dumbbell, Activity, Trophy, ArrowRight } from "lucide-react";
@@ -32,7 +32,6 @@ const services = [
 export default function Services() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -53,24 +52,24 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="programs" ref={sectionRef} className="py-32 bg-obsidian relative overflow-hidden">
-      {/* Background glow effect based on hovered card */}
-      <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-crimson/5 rounded-full blur-[120px] transition-opacity duration-700 pointer-events-none"
-        style={{ opacity: hoveredCard !== null ? 1 : 0.3 }}
-      />
+    <section id="services" ref={sectionRef} className="py-16 lg:py-32 relative bg-obsidian border-t border-white/5 overflow-hidden">
+      
+      {/* Background Particles/Gradients */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-obsidian-800 via-obsidian to-obsidian -z-20"></div>
 
       {/* Background 3D Model (Dumbbell) */}
       <div className="absolute inset-0 w-full h-full opacity-40 z-0">
         <ThreeDViewer 
           modelPath="/models/little_gym_stuff_-_dumbbell.glb" 
+          fallbackImage="/images/services_mobile_fallback.png"
           scale={3} 
           position={[0, 0, 0]} 
         />
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+      <div className="container mx-auto px-6 md:px-12 relative z-10 pointer-events-none">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-24">
           <h2 className="text-crimson font-bold tracking-widest uppercase text-sm mb-4">
             Elite Training Programs
           </h2>
@@ -80,14 +79,12 @@ export default function Services() {
         </div>
 
         <div ref={cardsRef} className="grid lg:grid-cols-3 gap-8">
-          {services.map((service, index) => {
+          {services.map((service) => {
             const Icon = service.icon;
             return (
               <div 
                 key={service.id}
-                className="service-card group relative bg-obsidian-800 border border-white/5 rounded-2xl p-10 hover:border-crimson/30 transition-all duration-500 overflow-hidden"
-                onMouseEnter={() => setHoveredCard(index)}
-                onMouseLeave={() => setHoveredCard(null)}
+                className="service-card group relative bg-obsidian-800/50 backdrop-blur-sm border border-white/5 p-8 rounded-3xl overflow-hidden hover:border-crimson/30 transition-all duration-500 hover:-translate-y-2 pointer-events-auto shadow-[0_0_0_rgba(225,29,72,0)] hover:shadow-[0_20px_40px_-10px_rgba(225,29,72,0.15)]"
               >
                 {/* Number background */}
                 <div className="absolute -top-10 -right-4 text-[120px] font-display font-bold text-white/[0.02] group-hover:text-crimson/[0.05] transition-colors duration-500 pointer-events-none">

@@ -52,19 +52,20 @@ export default function About() {
   ];
 
   return (
-    <section id="about" ref={sectionRef} className="py-32 relative bg-obsidian-900 border-t border-white/5 overflow-hidden">
+    <section id="about" ref={sectionRef} className="py-16 lg:py-32 relative bg-obsidian-900 border-t border-white/5 overflow-hidden">
       
       {/* Background 3D Model */}
       <div className="absolute inset-0 w-full h-full opacity-40 z-0">
         <ThreeDViewer 
           modelPath="/models/gym_bench_chair.glb" 
+          fallbackImage="/images/about_mobile_fallback.png"
           scale={1.5} 
           position={[0, 0, 0]} 
         />
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="container mx-auto px-6 md:px-12 relative z-10 pointer-events-none">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           
           {/* Stats Bento Grid */}
           <div ref={statsRef} className="grid grid-cols-2 gap-4">

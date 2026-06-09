@@ -98,6 +98,7 @@ export default function Transformations() {
               
               {/* Before/After Image Split */}
               <div className="absolute inset-0 flex items-center justify-center bg-obsidian-800 -z-20">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img 
                   src="/images/before_after.png" 
                   alt="Transformation" 
